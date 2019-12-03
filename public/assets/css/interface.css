@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css?family=Revalia&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+header{
+    padding: 2%;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+.picture{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: -99;
+    object-fit: cover;
+}
+
+
+body{
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: 'Revalia', cursive;
+}
+
+.content{
+    display: grid;
+    grid-template-columns: 15% auto;
+    grid-template-rows: 50px auto;
+    grid-template-areas:
+            "aside location"
+            "aside main";
+}
+
+nav {
+    grid-area: aside;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 1em 0;
+    height: 100vh;
+    justify-content: space-between;
+}
+
+.navAvatar{
+    width: 80%;
+    border-radius: 50%;
+}
+
+.logoStats{
+    height: 2rem;
+}
+
+.stats{
+    background-color: rgba(255, 255, 255, 0.3);
+    padding: 0.5em;
+    border-radius: 15px;
+    font-size: 1em;
+    width: 90%;
+}
+
+.stats li{
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+.stats li img{
+    margin-right: 0.3em;
+
+}
+
+#bagScript, #bagScriptEnigma{
+    position: absolute;
+    background-color: aliceblue;
+    width: 70%;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #FFFFFF;
+    margin: auto;
+    padding: auto;
+    top: 10%;
+    left: 15%;
+}
+
+#statsScript{
+    margin-top: 25px;
+    border-top: 1px solid white;
+}
+
+.bag{
+    width: 80%;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #FFFFFF;
+}
+
+.bag p, #bagScript p{
+    text-align: center;
+    font-size: 2em;
+    margin: 0.5em 0;
+}
+
+.bag ul, #bagScript ul{
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 1em 0;
+}
+
+.bag li, #bagScript li{
+    list-style: none;
+    text-align: center;
+    margin: 0.5em 0;
+}
+
+.bag li button, #bagScript li button{
+    width: 80%;
+    border: 1px solid #FFFFFF;
+    border-radius: 15px;
+    height: 2em;
+    color: #FFFFFF;
+    text-transform: capitalize;
+}
+
+.location{
+    grid-area: location;
+    background-color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px 3%;
+    align-items: center;
+}
+
+.location h4{
+    color: #FFFFFF;
+    width: 90%;
+    margin-top: 0.5%;
+}
+
+#bagIcon, #bagScript, #statsScript, #bagScriptEnigma{
+    display: none;
+}
+
+main{
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition-duration: 1s;
+    height: calc(100vh - 70px);
+    overflow: hidden;
+}
+
+.restartGame-mage, .restartGame-warrior, .restartGame-rogue{
+    border: 1px solid #FFFFFF;
+    box-sizing: border-box;
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    font-size: 15px;
+    font-family: 'Revalia', cursive;
+    color: #FFFFFF;
+    height: 30px;
+    padding: 0.2em;
+}
+
+.reset{
+    margin-bottom: 15%;
+}
+
+@media screen and (max-width: 800px){
+    .content{
+        grid-template-columns: auto;
+        grid-template-rows: 70px auto;
+        grid-template-areas:
+                "location"
+                "main";
+    }
+
+    nav{
+        display: none;
+    }
+
+    #bagIcon{
+        display: block;
+        border-radius: 50%;
+    }
+
+    body{
+        display: flex;
+    }
+
+    .location h4{
+        margin-right: 0;
+        text-align: center;
+        margin-top: 1.5%;
+    }
+}

@@ -1,0 +1,14 @@
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/deadcharacter.css">
+{% endblock %}
+{% block content %}
+    <h2>GAME OVER</h2>
+    <div id="history">
+        <p id="textstory">{{story.story}}</p>
+    </div>
+    <div id="responses">
+        <button class="response"><a href="/" style="text-decoration: none; color: white"><p>Restart</p></a></button>
+    </div>
+
+{% endblock %}

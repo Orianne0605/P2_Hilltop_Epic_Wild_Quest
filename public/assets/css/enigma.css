@@ -1,0 +1,122 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+main {
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: calc(100vh - 70px);
+}
+
+#enigma{
+    font-family: 'Revalia', cursive;
+    margin: 5%;
+    width: 90%;
+    border: none;
+    color: white;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: row;
+    transition-duration: 1s;
+    height: 60%;
+}
+
+.element{
+    font-size: 20px;
+    text-align: center;
+    margin: auto;
+    max-height: 80%;
+    overflow-y: scroll;
+}
+
+.element p{
+    padding: 5%;
+    line-height: 30px;
+}
+
+.element2{
+    margin: auto;
+    padding: 5%;
+    font-size: 18px;
+    text-align: center;
+    width: 200%;
+}
+
+.clue {
+    border: none;
+    background-color: rgba(129, 126, 126, 0.5);
+    border-radius: 20px;
+    text-align: center;
+    padding: 15px 0;
+}
+
+#answer{
+    color: white;
+    border: none;
+    background-color:rgba(129, 126, 126, 0.5);
+    border-radius: 20px;
+    text-align: center;
+    font-family: 'Revalia', cursive;
+    width: 100%;
+}
+
+input{
+    color: white;
+    border: none;
+    background-color:rgba(129, 126, 126, 0.5);
+    padding: 12px 35px 15px 35px;
+    border-radius: 20px;
+    text-align: center;
+    font-family: 'Revalia', cursive;
+    width: 100%;
+}
+
+@media screen and (max-width: 800px){
+    *{
+        margin: 0;
+        padding: 0;
+    }
+
+    body{
+        background-position: center;
+    }
+
+    #enigma{
+        flex-direction: column;
+        height: 80%;
+    }
+    .element{
+        font-size: 15px;
+        max-height: 200px;
+        overflow-y: scroll;
+    }
+
+    .element p{
+        line-height: 20px;
+    }
+
+    .element2{
+        margin: auto;
+        padding: 1em;
+        width: 100%;
+    }
+
+    #answer{
+        padding: 8px;
+    }
+
+    .clue, #answer, input{
+        width: 100%;
+        margin: auto;
+    }
+}
+
+@media screen and (min-width: 1500px){
+    .avatarMobile{
+        display: none;
+    }
+}

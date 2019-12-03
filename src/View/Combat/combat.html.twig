@@ -1,0 +1,146 @@
+{% extends 'interface.html.twig' %}
+ {% block stylesheet %}
+     <link rel="stylesheet" href="/assets/css/combat.css">
+
+ {% endblock %}
+
+
+{% block main %}
+            <div id="combat">
+            <h5>Un {{creature.name}} vous attaque !</h5>  <!-- TODO:render the creature  name dynamic -->
+            <div class="combatInterface">
+
+                <!-- The creature block -->
+                <div class="creatureBlock">
+
+                    <!-- state text during combat -->
+                    <div class="creatureText">
+                    </div>
+                    <!-- image and lifebar -->
+                    <div class="creatureState">
+                        <img src="/assets/images/{{ creature.name }}.png" alt="creatureSprite" class="creatureSprite" />
+                        <progress id="healthCreature" value="{{ creature.health }}" max="{{ creatureMaxHealth }}"></progress>
+                    </div>
+                </div>
+
+                <!-- The user block -->
+                <div class="userBlock">
+
+                    <!-- image and lifebar + interaction buttons -->
+                    <div class="userState">
+                        <div class="avatar">
+                            <img src="/assets/images/{{ hero.name }}.png" alt="userAvatar" class="avatar">
+                        </div>
+
+                        <div class="avatarMobile">
+                            <img src="/assets/images/{{ hero.name }}.png" alt="userAvatar" class="avatarMobile">
+                        </div>
+
+                        <div class="actions">
+
+                            <div class="actionBtn">
+                                <button id="weaponsDisplayer">Weapons</button>
+                                <button id="itemsDisplayer">Items</button>
+
+                                <!-- combatScript starts -->
+                                <div id="displayedWeapons" class="displayedBar">
+                                    {% if weapons is empty %}
+                                    {% else %}
+                                        {% for weapon in weapons %}
+                                            {% if weapon.name is null %}
+                                            {% else %}
+                                                    <button id="{{weapon.name}}"
+                                                            onclick="if(confirm('Utiliser cette arme ?'))
+                                                                    {location.href='/combat/useweapon/{{ weapon.name }}/{{ path[3] }}/{{ path[2] }}'}"
+                                                            type="submit"
+                                                            name="{{weapon.name}}">
+                                                        {{weapon.name | capitalize}}
+                                                        <img src="/assets/images/sword.png" alt="sword" class="logoStats">
+                                                        <span class="statInBar">{{ weapon.attack }}</span>
+                                                    </button>
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+
+                                <div id="displayedItems" class="displayedBar">
+                                    {% if potions is empty %}
+                                    {% else %}
+                                        {% for potion in potions %}
+                                            {% if potion.name is null %}
+                                            {% else %}
+                                                    <button onclick="if(confirm('Utiliser cette potion ?'))
+                                                    {location.href='/quest/usepotion/{{ hero.id }}'}" type="submit"
+                                                            name="{{potion.name}}">{{potion.name|capitalize}}</button>
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <progress id="healthUser" value="{{hero.health}}" max="{{ heroMaxHealth }}"></progress>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div id="bagScript">
+        <p>Bag</p>
+        <ul>
+            {% for hero in heroes %}
+                {% if path[3] == hero.id %}
+                    <!-- displays weapons -->
+                    {% if weapons is empty %}
+                    {% else %}
+                        {% for weapon in weapons %}
+                            {% if weapon.name is null %}
+                            {% else %}
+                                <li>
+                                    <button class="inventoryBtn-{{ hero.name }}">{{weapon.name}}</button>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    <!-- end display weapons -->
+                    <!-- displays potions -->
+                    {% if potions is empty %}
+                    {% else %}
+                        {% for potion in potions %}
+                            {% if potion.name is null %}
+                            {% else %}
+                                <li>
+                                    <button class="inventoryBtn-{{ hero.name }}" onclick="if(confirm('Utiliser cette potion ?')){location.href='/quest/usepotion/{{ hero.id }}'}" type="submit" name="{{potion.name}}">{{potion.name}}</button>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    <!-- end display potions -->
+                    <!-- displays spells -->
+                    {% if spells is empty %}
+                    {% else %}
+                        {% for spell in spells %}
+                            {% if spell.name is null %}
+                            {% else %}
+                                <li>
+                                    <button>{{spell.name}}</button>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    <!-- end display spells -->
+                {% endif %}
+            {% endfor %}
+        </ul>
+        {% for hero in heroes %}
+            {% if path[3] == hero.id %}
+                <ul id="statsScript">
+                    <li><img src="/assets/images/life.png" alt="" class="logoStats"> Health: {{hero.health}}</li>
+                    <li><img src="/assets/images/sword.png" alt="" class="logoStats"> Attack: {{hero.attack}}</li>
+                    <li><img src="/assets/images/gold.png" alt="" class="logoStats"> Gold: {{hero.gold}}</li>
+                </ul>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+
+{% endblock main %}

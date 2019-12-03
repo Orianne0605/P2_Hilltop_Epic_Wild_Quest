@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="/assets/css/scripts.css">
+    <link rel="stylesheet" href="/assets/css/interface.css">
+    {% block stylesheet %}
+
+
+    {% endblock %}
+
+</head>
+
+<body>
+
+{% block content %}
+
+    {% block button %}
+
+    {% endblock button %}
+
+{% endblock content %}
+
+
+
+
+
+{% block javascript %}{% endblock %}
+</body>
+</html>
+
+

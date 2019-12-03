@@ -1,0 +1,96 @@
+{% extends 'interface.html.twig' %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/enigma.css">
+{% endblock %}
+
+{% block title %}Enigma{% endblock title %}
+
+{% block main %}
+ <!-- TODO : form heading to next story if enigma is solved -->
+    <div id="enigma">
+        <div class="element"><p>{{ enigma.story }}</p></div>
+        <div class="element2">
+            <p class="clue">
+                Indice
+                <br>A -> Z
+                <br>Z <- A
+            </p>
+            <br>
+            <div id="secretCode">
+            <p class="code">Code secret :</p>
+            <br>
+            <p class="code2">ERVMH NV ELRI</p>
+            </div>
+            <br>
+
+            <form action="../../../enigma/sendAnswer/{{ path[2] }}/{{ path[3] }}" method="POST">
+            <label for="answer"></label>
+            <textarea id="answer" placeholder="Réponse" name="answer"></textarea>
+            <br>
+            <br>
+            <input type="submit" value="Valider">
+        </form>
+        </div>
+    </div>
+
+    <!---  bagScript showing in mobile --->
+    <div id="bagScript">
+        <p>Bag</p>
+        <ul>
+            {% for hero in heroes %}
+                {% if path[3] == hero.id %}
+                    <!-- displays weapons -->
+                    {% if weapons is empty %}
+                    {% else %}
+                        {% for weapon in weapons %}
+                            {% if weapon.name is null %}
+                            {% else %}
+                                <li>
+                                    <button class="inventoryBtn-{{ hero.name }}">{{weapon.name}}</button>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    <!-- end display weapons -->
+                    <!-- displays potions -->
+                    {% if potions is empty %}
+                    {% else %}
+                        {% for potion in potions %}
+                            {% if potion.name is null %}
+                            {% else %}
+                                <li>
+                                    <button class="inventoryBtn-{{ hero.name }}" onclick="if(confirm('Utiliser cette potion ?')){location.href='/quest/usepotion/{{ hero.id }}'}" type="submit" name="{{potion.name}}">{{potion.name}}</button>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    <!-- end display potions -->
+                    <!-- displays spells -->
+                    {% if spells is empty %}
+                    {% else %}
+                        {% for spell in spells %}
+                            {% if spell.name is null %}
+                            {% else %}
+                                <li>
+                                    <button>{{spell.name}}</button>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    <!-- end display spells -->
+                {% endif %}
+            {% endfor %}
+        </ul>
+        {% for hero in heroes %}
+            {% if path[3] == hero.id %}
+                <ul id="statsScript">
+                    <li><img src="/assets/images/life.png" alt="" class="logoStats"> Health: {{hero.health}}</li>
+                    <li><img src="/assets/images/sword.png" alt="" class="logoStats"> Attack: {{hero.attack}}</li>
+                    <li><img src="/assets/images/gold.png" alt="" class="logoStats"> Gold: {{hero.gold}}</li>
+                </ul>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <script src="/assets/JS/bagScript.js"></script>
+{% endblock %}

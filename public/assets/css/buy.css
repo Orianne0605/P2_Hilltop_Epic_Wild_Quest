@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css?family=Revalia&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body{
+    background: url("../images/homeImage.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    font-family: 'Revalia', cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ul{
+    list-style: none;
+}
+
+.main-block{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 70vw;
+    height: 60%;
+    align-items: center;
+    margin-bottom: 7em;
+}
+
+h3{
+    font-size: 45px;
+}
+
+.buy-block{
+    display: flex;
+    height: 60%;
+}
+
+.left-part{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border-right: 1px solid white;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 15px 0 0 15px;
+}
+
+.left-part p{
+    width: 80%;
+    font-size: 1.8em;
+}
+
+.left-part button{
+    width: 80%;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.765) 0%, rgba(174, 48, 9, 0.407812) 54.69%, rgba(4, 0, 14, 0.765) 100%);
+    border-radius: 15px;
+    font-size: 3em;
+    font-family: 'Revalia', cursive;
+    color: black;
+    line-height: 130%;
+    padding-bottom: 0.4em;
+    border: none;
+}
+
+.right-part{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 0 15px 15px 0;
+}
+
+.right-part h5{
+    font-size: 1.5em ;
+}
+
+.right-part ul {
+    text-align: right;
+}
+
+@media screen and (max-width: 640px) {
+
+    body{
+        flex-direction: column;
+    }
+
+    .main-block{
+        margin-bottom: 0;
+        justify-content: space-around;
+    }
+
+    h3{
+        font-size: 2em;
+        text-align: center;
+    }
+
+    .buy-block{
+        margin-top: 1em;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .right-part, .left-part{
+        width: 100%;
+        height: 50%;
+    }
+
+    .right-part {
+        border-radius: 0 0 15px 15px;
+    }
+
+    .left-part{
+        border-radius: 15px 15px 0 0;
+        border-right: none;
+    }
+
+    .left-part p {
+        font-size: 1.2em;
+        width: 90%;
+        text-align: center;
+    }
+
+    .left-part button{
+        line-height: 120%;
+        font-size: 2em;
+
+    }
+
+    .right-part h5, .right-part ul{
+        margin-bottom: 1em;
+    }
+}
